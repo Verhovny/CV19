@@ -15,12 +15,56 @@
         <VM:MainWindowViewModel/>
     </Window.DataContext>
 
-    <Grid>
 
-        <TextBox Text="{Binding Title,UpdateSourceTrigger=PropertyChanged}" Width="200" Height="20"   />
-
-        <Slider Margin="50,50,50,50" Value="{Binding Title}"  />
+    <DockPanel>
 
 
-    </Grid>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл" >
+                <MenuItem Header="Выход"></MenuItem>    
+            </MenuItem>
+            <MenuItem Header="Помощь">Помощь</MenuItem>
+        </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom">
+
+            <Button Height="50"
+                    Width="50"
+                    Background="White"
+                    Command="{Binding MessageCommand}"
+                    CommandParameter="{Binding ElementName=items, Path=SelectedItem}"
+                    
+                    
+                    >
+                
+                <StackPanel>
+                    <Rectangle Width="45" Height="45" Fill="Yellow" RadiusX="3" RadiusY="3"   />
+                </StackPanel>
+                
+            </Button>
+            
+        </StatusBar>
+
+        <TabControl>
+            <TabItem Header="1">
+
+                <StackPanel>
+
+                    <ListView Name="items"  ItemsSource="{Binding Items}" />
+
+                    <TextBlock Text="{Binding ElementName=items, Path=SelectedItem, StringFormat= элемент:{0} }" />
+
+                </StackPanel>
+                
+                
+                
+
+
+            </TabItem>
+            <TabItem Header="2"></TabItem>
+        </TabControl>
+        
+        
+    </DockPanel>
+    
 </Window>
