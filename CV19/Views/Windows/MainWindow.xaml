@@ -18,6 +18,16 @@
         <VM:MainWindowViewModel/>
     </Window.DataContext>
 
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding CloseApplicationCommand}"/>
+    </Window.InputBindings>
+
+    
+    <!-- Вынесение команды в ресурсы как синглтон -->
+    <Window.Resources>
+        <command:TestCommand x:Key="TestCommand"/>
+    </Window.Resources>
+
 
     <DockPanel>
 
@@ -43,17 +53,52 @@
                     
                 
                 <StackPanel>
-                    <Rectangle Width="45" Height="45" Fill="Yellow" RadiusX="3" RadiusY="3"   />
+                    <Rectangle Width="45"
+                               Height="45"
+                               Fill="Yellow"
+                               RadiusX="3"
+                               RadiusY="3">
+                    </Rectangle>
+
                 </StackPanel>
+
+
+                <!-- Отдельная команда в отдельном классе 
                 
+                Лучше вынести в отдельные ресурсы, ибо может быть расточительно для памяти
                 
-                <!-- Отдельная команда в отдельном классе -->
                 <Button.Command>
                     <command:TestCommand/>
                 </Button.Command>
+                -->
+                
                 
             </Button>
-            
+
+            <Rectangle Width="45"
+                               Height="45"
+                               Fill="Green"
+                               RadiusX="3"
+                               RadiusY="3">
+
+                <Rectangle.InputBindings>
+                    <MouseBinding Command="{Binding CloseApplicationCommand}" MouseAction="LeftDoubleClick" />
+                </Rectangle.InputBindings>
+            </Rectangle>
+
+
+            <Rectangle Width="45"
+                               Height="45"
+                               Fill="Blue"
+                               RadiusX="3"
+                               RadiusY="3">
+
+                <Rectangle.InputBindings>
+                    <MouseBinding Command="{StaticResource TestCommand}" MouseAction="LeftDoubleClick" />
+                </Rectangle.InputBindings>
+            </Rectangle>
+
+
         </StatusBar>
 
         <TabControl>

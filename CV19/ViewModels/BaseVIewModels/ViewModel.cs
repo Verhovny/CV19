@@ -10,8 +10,9 @@ namespace CV19.ViewModels.BaseVIewModels
 {
     internal abstract class ViewModel : INotifyPropertyChanged, IDisposable 
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
 
+        #region NotifyPropertyChanged
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string PropertyName = null)
         {
@@ -21,13 +22,14 @@ namespace CV19.ViewModels.BaseVIewModels
         // разрешить кольцевые обновления свойств без зацикливания
         protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string PropertyName = null)
         {
-            if(Equals(field, value)) return false;
-            field= value;
+            if (Equals(field, value)) return false;
+            field = value;
             OnPropertyChanged(PropertyName);
             return true;
         }
+        #endregion
 
-
+        #region Disposable
         // деструктор
         ~ViewModel()
         {
@@ -46,6 +48,8 @@ namespace CV19.ViewModels.BaseVIewModels
             if (!Disposing || _Disposed) return;
             _Disposed = true;
             // Освобождение управляемых ресурсов 
-        }
+        } 
+        #endregion
+
     }
 }
