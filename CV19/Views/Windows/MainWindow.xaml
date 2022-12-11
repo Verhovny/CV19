@@ -4,6 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CV19"
+        
+        xmlns:command="clr-namespace:CV19.Infrastructure.Commands"
+        
         xmlns:VM="clr-namespace:CV19.ViewModels"
         mc:Ignorable="d"
         
@@ -30,16 +33,24 @@
 
             <Button Height="50"
                     Width="50"
-                    Background="White"
-                    Command="{Binding MessageCommand}"
+                    Background="White">
+                    <!-- Подключение команды как свойства ViewModel
+                    Command="{Binding CloseApplicationCommand}"
+                    
                     CommandParameter="{Binding ElementName=items, Path=SelectedItem}"
+                    -->
                     
                     
-                    >
                 
                 <StackPanel>
                     <Rectangle Width="45" Height="45" Fill="Yellow" RadiusX="3" RadiusY="3"   />
                 </StackPanel>
+                
+                
+                <!-- Отдельная команда в отдельном классе -->
+                <Button.Command>
+                    <command:TestCommand/>
+                </Button.Command>
                 
             </Button>
             

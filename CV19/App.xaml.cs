@@ -8,13 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-
 namespace CV19
 {
 
     public partial class App : Application
     {
-
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -23,11 +21,8 @@ namespace CV19
             //MainWindowViewModel vm = new MainWindowViewModel();
             //mv.DataContext = vm;
 
-            mv.Show();
+            mv.Show(); 
         }
-
-
-
 
     }
 }
