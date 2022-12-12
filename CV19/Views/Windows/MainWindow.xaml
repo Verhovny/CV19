@@ -7,6 +7,9 @@
         
         xmlns:command="clr-namespace:CV19.Infrastructure.Commands"
         
+        
+        xmlns:fa="http://schemas.fontawesome.com/icons/fonts/properties"
+        
         xmlns:VM="clr-namespace:CV19.ViewModels"
         mc:Ignorable="d"
         
@@ -76,10 +79,10 @@
             </Button>
 
             <Rectangle Width="45"
-                               Height="45"
-                               Fill="Green"
-                               RadiusX="3"
-                               RadiusY="3">
+                       Height="45"
+                       Fill="Green"
+                       RadiusX="3"
+                       RadiusY="3">
 
                 <Rectangle.InputBindings>
                     <MouseBinding Command="{Binding CloseApplicationCommand}" MouseAction="LeftDoubleClick" />
@@ -99,6 +102,9 @@
             </Rectangle>
 
 
+            <Button fa:FontAwesome.Icon="Solid_RightToBracket"/>
+            
+            
         </StatusBar>
 
         <TabControl>
@@ -110,6 +116,7 @@
 
                     <TextBlock Text="{Binding ElementName=items, Path=SelectedItem, StringFormat= элемент:{0} }" />
 
+                   
                 </StackPanel>
                 
                 
